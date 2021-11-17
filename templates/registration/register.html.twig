@@ -2,12 +2,25 @@
 
 {% block title %}Register{% endblock %}
 
+{% block nav %}
+    <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
+    <li>
+        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+    </li>
+{% endblock %}
+
 {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 ml-md-auto">
+            <div class="">
+                <div class="card bg-light mb-3 mt-5" style="width: 800px;">
+                    <div class="card-body">
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -16,6 +29,12 @@
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-lg btn-primary">Register</button>
     {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
