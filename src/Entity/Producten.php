@@ -47,11 +47,6 @@ class Producten
     private $meeteenheid;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $vervaldatum;
-
-    /**
      * @ORM\OneToMany(targetEntity=Opslag::class, mappedBy="productId")
      */
     private $opslags;
@@ -126,18 +121,6 @@ class Producten
         return $this;
     }
 
-    public function getVervaldatum(): ?\DateTimeInterface
-    {
-        return $this->vervaldatum;
-    }
-
-    public function setVervaldatum(?\DateTimeInterface $vervaldatum): self
-    {
-        $this->vervaldatum = $vervaldatum;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Opslag[]
      */
@@ -166,5 +149,9 @@ class Producten
         }
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->naam;
     }
 }
